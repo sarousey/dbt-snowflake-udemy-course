@@ -6,7 +6,7 @@ WITH CTE AS (
         {{ day_type('STARTED_AT')}} AS DAY_TYPE,
         -- Pass the raw column since alias isn't available yet
         {{ get_season('STARTED_AT') }} AS STATION_OF_YEAR
-    FROM {{ source('demo', 'bike') }}
+    FROM {{ ref('stg_bike') }}
     WHERE STARTED_AT != 'started_at' AND STARTED_AT != '"started_at"'
 )
 
